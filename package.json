@@ -1,0 +1,19 @@
+{
+  "name": "node.js-design-patterns",
+  "version": "1.0.0",
+  "description": "My solutions of exercises from the book \"Node.js Design Patterns\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dima7a14/node.js-design-patterns.git"
+  },
+  "author": "Dima Danyliuk <dimadanylyuk@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dima7a14/node.js-design-patterns/issues"
+  },
+  "homepage": "https://github.com/dima7a14/node.js-design-patterns#readme"
+}
