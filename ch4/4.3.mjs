@@ -2,40 +2,54 @@ import path from "path";
 import fs from "fs";
 
 function recursiveFind(dir, keyword, cb) {
-  const dirs = new Set([dir]);
+  const foundFiles = [];
+  const processingPaths = new Set([dir]);
+  const done = () => {
+    if (processingPaths.size === 0) {
+      cb(foundFiles);
+    }
+  };
+  const searchContent = (filePath) => {
+    fs.readFile(filePath, { encoding: "utf8" }, (err, fileContent) => {
+      if (err) {
+        return console.log(err);
+      }
+
+      if (fileContent.toString().indexOf(keyword) !== -1) {
+        foundFiles.push(filePath);
+      }
+
+      processingPaths.delete(filePath);
+
+      done();
+    });
+  };
   const searchFiles = (dirPath) => {
     fs.readdir(path.resolve(dirPath), { encoding: "utf8" }, (err, data) => {
       if (err) {
         return console.log(err);
       }
 
-      let found = null;
-
       data.forEach((f) => {
         const filePath = path.resolve(dirPath, f);
         const stats = fs.lstatSync(filePath);
 
+        processingPaths.add(filePath);
+
         if (stats.isDirectory()) {
-          dirs.add(filePath);
           searchFiles(filePath);
-        } else if (f.indexOf(keyword) !== -1) {
-          found = f;
+        } else {
+          searchContent(filePath);
         }
       });
 
-      if (found) {
-        return cb(found);
-      }
+      processingPaths.delete(dirPath);
 
-      dirs.delete(dirPath);
-
-      if (dirs.size === 0) {
-        return cb("Not found!");
-      }
+      done();
     });
   };
 
   searchFiles(dir);
 }
 
-recursiveFind("../", "package", console.log);
+recursiveFind("./", "bar", console.log);
