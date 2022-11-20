@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/dima7a14/node.js-design-patterns/issues"
   },
-  "homepage": "https://github.com/dima7a14/node.js-design-patterns#readme"
+  "homepage": "https://github.com/dima7a14/node.js-design-patterns#readme",
+  "dependencies": {
+    "csv-parse": "^5.3.2"
+  },
+  "type": "module"
 }
