@@ -33,6 +33,8 @@ function createCacheableClient(client) {
           return client.get(url, cbWithCache);
         };
       }
+
+      return target[propKey];
     },
   });
 }
