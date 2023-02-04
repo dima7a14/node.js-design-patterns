@@ -6,7 +6,7 @@ class Logger {
     this.destination = destination;
   }
 
-  debugger(...messages) {
+  debug(...messages) {
     this.destination.write(
       ...messages.map(
         (msg) => `${styles.blueBright.open}${msg}${styles.blueBright.close}`
@@ -93,7 +93,7 @@ class FileDestination {
 function main() {
   const consoleLogger = new Logger({ destination: consoleDestination });
 
-  consoleLogger.debugger("This is a debug point!");
+  consoleLogger.debug("This is a debug point!");
   consoleLogger.info("Interesting...");
   consoleLogger.warn("This method is DEPRECATED!");
   consoleLogger.error("Oops...");
@@ -102,7 +102,7 @@ function main() {
     destination: new FileDestination("./fileDestination.txt"),
   });
 
-  fileLogger.debugger("This is a debug point!");
+  fileLogger.debug("This is a debug point!");
   fileLogger.info("Interesting...");
   fileLogger.warn("This method is DEPRECATED!");
   fileLogger.error("Oops...");
