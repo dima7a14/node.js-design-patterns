@@ -75,7 +75,7 @@ class FileLogger extends Logger {
 			this.buf = "";
 			this.isProcessing = false;
 		} catch (err) {
-			console.error(`Error during writing into the file: ${err}`);
+			console.warn(`Error during writing into the file: ${err}`);
 		}
 	}
 
