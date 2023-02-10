@@ -18,7 +18,8 @@
   "homepage": "https://github.com/dima7a14/node.js-design-patterns#readme",
   "dependencies": {
     "ansi-styles": "^6.2.1",
-    "csv-parse": "^5.3.2"
+    "csv-parse": "^5.3.2",
+    "superagent": "^8.0.9"
   },
   "type": "module"
 }
